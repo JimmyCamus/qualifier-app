@@ -7,7 +7,6 @@ type Data = {
 };
 
 const getAllGames = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  console.log(req.query);
   const response = await fetch(`${process.env.SERVER_URL}/games`);
   const games: Game[] = await response.json();
 
