@@ -24,16 +24,16 @@ const Navbar = ({ children }: { children: ReactNode }) => {
               </svg>
             </label>
           </div>
-          <div className="flex-1 px-2 mx-2 text-base-100 text-2xl lg:text-3xl">
+          <div className="flex-1 px-2 mx-2 text-black text-2xl font-bold lg:text-3xl">
             <Link href="/">Game Qualifier</Link>
           </div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal text-black">
               <li>
-                <a>Navbar Item 1</a>
+                <Link href="/">Login</Link>
               </li>
               <li>
-                <a>Navbar Item 2</a>
+                <Link href="/">Register</Link>
               </li>
             </ul>
           </div>
@@ -44,10 +44,10 @@ const Navbar = ({ children }: { children: ReactNode }) => {
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 bg-base-100">
           <li>
-            <a>Sidebar Item 1</a>
+            <Link href="/">Login</Link>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <Link href="/">Register</Link>
           </li>
         </ul>
       </div>
