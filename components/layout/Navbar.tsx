@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 
 const Navbar = ({ children }: { children: ReactNode }) => {
@@ -23,7 +24,9 @@ const Navbar = ({ children }: { children: ReactNode }) => {
               </svg>
             </label>
           </div>
-          <div className="flex-1 px-2 mx-2 text-base-100 text-2xl lg:text-3xl">Game Qualifier</div>
+          <div className="flex-1 px-2 mx-2 text-base-100 text-2xl lg:text-3xl">
+            <Link href="/">Game Qualifier</Link>
+          </div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal text-black">
               <li>
