@@ -1,9 +1,10 @@
-const Home = () => {
+import GameList from "../components/GameList";
+import { Game } from "../lib/types/game.type";
+
+const Home = ({ games }: { games: Game[] }) => {
   return (
     <>
-      <div>
-        <h1 className="text-3xl text-primary">Hello World</h1>
-      </div>
+      <GameList games={games} />
     </>
   );
 };
