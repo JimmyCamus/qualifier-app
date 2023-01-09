@@ -6,7 +6,7 @@ const Navbar = ({ children }: { children: ReactNode }) => {
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
-        <div className="w-full navbar bg-primary h-24">
+        <div className="w-full navbar bg-primary">
           <div className="flex-none lg:hidden">
             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
               <svg
