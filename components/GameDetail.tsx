@@ -5,8 +5,8 @@ import Comment from "./Comment";
 
 const GameDetail = ({ game }: { game: Game }) => {
   const handleStars = useHandleStars();
-  console.log(game);
-  if (!game) return <progress className="progress w-56"></progress>;
+
+  if (!game) return null;
 
   return (
     <div className="flex justify-center">
