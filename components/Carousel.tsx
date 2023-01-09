@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Carousel = ({ images }: { images: string[] }) => {
-  console.log(images);
   return (
     <div className="flex justify-center mt-9">
       <div className="carousel w-full rounded-md">

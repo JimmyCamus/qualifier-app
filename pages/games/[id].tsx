@@ -2,7 +2,11 @@ import GameDetail from "../../components/GameDetail";
 import { Game } from "../../lib/types/game.type";
 
 const Game = ({ game }: { game: Game }) => {
-  return <GameDetail game={game} />;
+  return (
+    <>
+      <GameDetail game={game} />
+    </>
+  );
 };
 
 export default Game;

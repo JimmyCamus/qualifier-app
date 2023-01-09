@@ -13,6 +13,5 @@ const handleStars = (rating: number, identifier: string | number) => {
       />
     );
   }
-  console.log(identifier);
   return stars;
 };
