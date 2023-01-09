@@ -25,7 +25,16 @@ const Navbar = ({ children }: { children: ReactNode }) => {
             </label>
           </div>
           <div className="flex-1 px-2 mx-2 text-black text-2xl font-bold lg:text-3xl">
-            <Link href="/">Game Qualifier</Link>
+            <Link href="/">Game Qualifier </Link>
+            <div className="rating">
+              <input
+                type="radio"
+                name="rating-2"
+                className="mx-4 mask mask-star-2 bg-orange-400 hover:cursor-default"
+                disabled
+                checked
+              />
+            </div>
           </div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal text-black">
