@@ -79,7 +79,9 @@ const Navbar = ({ children }: { children: ReactNode }) => {
                 <Link href="/">Profile</Link>
               </li>
               <li>
-                <Link href="/">Logout</Link>
+                <button onClick={() => handleLogout(userContext)}>
+                  Sign Out
+                </button>
               </li>
             </>
           ) : (
