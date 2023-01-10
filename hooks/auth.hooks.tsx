@@ -6,12 +6,12 @@ import { LoginFormFieldsType } from "../lib/types/entries.type";
 export const useLogout = () => useHandleLogout;
 
 const useHandleLogout = async (
-  userContext: ContextType<typeof UserContext>
+  userContext: ContextType<typeof UserContext>,
+  router: NextRouter
 ) => {
-  const response = await fetch(`/api/auth/logout`);
-  const parsedResponse = await response.json();
-  console.log(parsedResponse);
+  await fetch(`/api/auth/logout`);
   userContext.dispatch({ type: "login", user: {} });
+  router.push("/");
 };
 
 export const useLogin = () => useHandleLogin;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import { useLogout } from "../../hooks/auth.hooks";
 import { useUser } from "../../lib/contexts/user.context";
@@ -8,6 +9,7 @@ const Navbar = ({ children }: { children: ReactNode }) => {
   const userContext = useUser();
   const user = userContext.user as User;
   const handleLogout = useLogout();
+  const router = useRouter();
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -47,10 +49,10 @@ const Navbar = ({ children }: { children: ReactNode }) => {
               {user.id ? (
                 <>
                   <li>
-                    <Link href="/">Profile</Link>
+                    <Link href="/profile">Profile</Link>
                   </li>
                   <li>
-                    <button onClick={() => handleLogout(userContext)}>
+                    <button onClick={() => handleLogout(userContext, router)}>
                       Sign Out
                     </button>
                   </li>
@@ -76,10 +78,10 @@ const Navbar = ({ children }: { children: ReactNode }) => {
           {user.id ? (
             <>
               <li>
-                <Link href="/">Profile</Link>
+                <Link href="/profile">Profile</Link>
               </li>
               <li>
-                <button onClick={() => handleLogout(userContext)}>
+                <button onClick={() => handleLogout(userContext, router)}>
                   Sign Out
                 </button>
               </li>
