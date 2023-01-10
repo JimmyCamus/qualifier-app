@@ -5,14 +5,18 @@ export type LoginFormFieldsType = {
   password: string;
 };
 
+export type LoginFormStateType = {
+  loginFormFields: LoginFormFieldsType;
+  setLoginFormFields: Dispatch<SetStateAction<LoginFormFieldsType>>;
+};
+
+export type LoginFormErrorStateType = {
+  loginFormError: boolean;
+  setLoginFormError: Dispatch<SetStateAction<boolean>>;
+};
+
 export type LoginFormEntries = {
   handleSubmit: Function;
-  loginFormState: {
-    loginFormFields: LoginFormFieldsType;
-    setLoginFormFields: Dispatch<SetStateAction<LoginFormFieldsType>>;
-  };
-  errorState: {
-    loginFormError: boolean;
-    setLoginFormError: Dispatch<SetStateAction<boolean>>;
-  };
+  loginFormState: LoginFormStateType;
+  errorState: LoginFormErrorStateType;
 };
