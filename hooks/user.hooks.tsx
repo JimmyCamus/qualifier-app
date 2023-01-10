@@ -1,11 +1,9 @@
 import { ContextType, useEffect } from "react";
 import { User } from "../lib/types/user.type";
-import { UserContext } from "../lib/contexts/user.context";
+import { useUser } from "../lib/contexts/user.context";
 
-export const useSetUserData = (
-  user: User,
-  userContext: ContextType<typeof UserContext>
-) => {
+export const useSetUserData = (user: User) => {
+  const userContext = useUser();
   useEffect(() => {
     const ctxUser = userContext.user as User;
     if (ctxUser.id) return;
