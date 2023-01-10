@@ -39,7 +39,7 @@ const Navbar = ({ children }: { children: ReactNode }) => {
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal text-black">
               <li>
-                <Link href="/">Login</Link>
+                <Link href="/login">Login</Link>
               </li>
               <li>
                 <Link href="/">Register</Link>
