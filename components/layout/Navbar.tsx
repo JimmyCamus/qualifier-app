@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import { useUser } from "../../lib/contexts/user.context";
+import { User } from "../../lib/types/user.type";
 
 const Navbar = ({ children }: { children: ReactNode }) => {
+  const userContext = useUser();
+  const user = userContext.user as User;
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -38,12 +42,25 @@ const Navbar = ({ children }: { children: ReactNode }) => {
           </div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal text-black">
-              <li>
-                <Link href="/login">Login</Link>
-              </li>
-              <li>
-                <Link href="/">Register</Link>
-              </li>
+              {user.id ? (
+                <>
+                  <li>
+                    <Link href="/">Profile</Link>
+                  </li>
+                  <li>
+                    <Link href="/">Logout</Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link href="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link href="/">Register</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
@@ -52,12 +69,25 @@ const Navbar = ({ children }: { children: ReactNode }) => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 bg-base-100">
-          <li>
-            <Link href="/">Login</Link>
-          </li>
-          <li>
-            <Link href="/">Register</Link>
-          </li>
+          {user.id ? (
+            <>
+              <li>
+                <Link href="/">Profile</Link>
+              </li>
+              <li>
+                <Link href="/">Logout</Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link href="/login">Login</Link>
+              </li>
+              <li>
+                <Link href="/">Register</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>
