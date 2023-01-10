@@ -31,7 +31,7 @@ const LoginForm = ({
         </div>
       </div>
       <div className="flex justify-center items-center h-full">
-        <div className="card  w-1/3 bg-primary text-neutral-content">
+        <div className="card w-[90vw] lg:w-3/5 2xl:w-1/3  bg-primary text-neutral-content">
           <div className="card-body items-center text-center">
             <h2 className="card-title text-3xl">LOGIN</h2>
             <div className="card-body justify-center w-full">
