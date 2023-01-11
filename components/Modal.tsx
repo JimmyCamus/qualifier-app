@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useCreateComment } from "../hooks/comment.hooks";
 import { CommentFormFieldsType } from "../lib/types/entries.type";
@@ -9,6 +10,8 @@ const Modal = ({ game }: { game: Game }) => {
       description: "",
       rating: 5,
     });
+
+  const router = useRouter();
 
   const handleCreateComment = useCreateComment();
   return (
@@ -100,7 +103,9 @@ const Modal = ({ game }: { game: Game }) => {
           <div className="modal-action">
             <button
               className="btn"
-              onClick={() => handleCreateComment(commentFormFields, game.id)}
+              onClick={() =>
+                handleCreateComment(commentFormFields, game.id, router)
+              }
             >
               Yay!
             </button>
