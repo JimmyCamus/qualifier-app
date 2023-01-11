@@ -1,9 +1,11 @@
 import { useHandleStars } from "../hooks/star.hooks";
 import { Game } from "../lib/types/game.type";
+import { User } from "../lib/types/user.type";
 import Carousel from "./Carousel";
 import Comment from "./Comment";
+import Modal from "./Modal";
 
-const GameDetail = ({ game }: { game: Game }) => {
+const GameDetail = ({ game, user }: { game: Game; user: User }) => {
   const handleStars = useHandleStars();
 
   if (!game) return null;
@@ -19,6 +21,11 @@ const GameDetail = ({ game }: { game: Game }) => {
         <div className="rating rating-lg flex justify-center mt-8">
           {handleStars(game.rating, "game")}
         </div>
+        {user.id ? (
+          <div className="flex justify-center my-11">
+            <Modal game={game} />
+          </div>
+        ) : null}
         {game.comments.map((comment, index) => (
           <div key={index} className="flex justify-center">
             <Comment comment={comment} />

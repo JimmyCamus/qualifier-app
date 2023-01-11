@@ -1,10 +1,14 @@
 import GameDetail from "../../components/GameDetail";
+import { useUser } from "../../lib/contexts/user.context";
 import { Game } from "../../lib/types/game.type";
+import { User } from "../../lib/types/user.type";
 
 const Game = ({ game }: { game: Game }) => {
+  const userContext = useUser();
+  const user = userContext.user as User;
   return (
     <>
-      <GameDetail game={game} />
+      <GameDetail game={game} user={user} />
     </>
   );
 };

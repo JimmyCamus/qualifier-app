@@ -20,3 +20,15 @@ export type LoginFormEntries = {
   loginFormState: LoginFormStateType;
   errorState: LoginFormErrorStateType;
 };
+
+export type CommentFormFieldsType = {
+  description: string;
+  rating: number;
+};
+
+export type CommentFormStateType = {
+  commentFormFields: CommentFormFieldsType;
+  setCommentFormFields: Dispatch<SetStateAction<CommentFormFieldsType>>;
+};
+
+
