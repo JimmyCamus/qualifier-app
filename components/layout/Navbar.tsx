@@ -63,7 +63,7 @@ const Navbar = ({ children }: { children: ReactNode }) => {
                     <Link href="/login">Login</Link>
                   </li>
                   <li>
-                    <Link href="/">Register</Link>
+                    <Link href="/register">Register</Link>
                   </li>
                 </>
               )}
@@ -92,7 +92,7 @@ const Navbar = ({ children }: { children: ReactNode }) => {
                 <Link href="/login">Login</Link>
               </li>
               <li>
-                <Link href="/">Register</Link>
+                <Link href="/register">Register</Link>
               </li>
             </>
           )}

@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { Alert } from "./alert.types";
 
 export type LoginFormFieldsType = {
   username: string;
@@ -21,6 +22,25 @@ export type LoginFormEntries = {
   errorState: LoginFormErrorStateType;
 };
 
+export type RegisterFormFieldsType = {
+  username: string;
+  password: string;
+  email: string;
+};
+
+export type RegisterFormStateType = {
+  registerFormFields: RegisterFormFieldsType;
+  setRegisterFormFields: Dispatch<SetStateAction<RegisterFormFieldsType>>;
+};
+
+export type RegisterFormEntries = {
+  handleSubmit: Function;
+  registerFormState: RegisterFormStateType;
+  alertVisibility: boolean;
+  alertType: string;
+  alertText: string;
+};
+
 export type CommentFormFieldsType = {
   description: string;
   rating: number;
@@ -30,5 +50,3 @@ export type CommentFormStateType = {
   commentFormFields: CommentFormFieldsType;
   setCommentFormFields: Dispatch<SetStateAction<CommentFormFieldsType>>;
 };
-
-

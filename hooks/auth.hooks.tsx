@@ -1,7 +1,10 @@
 import { NextRouter } from "next/router";
 import { ContextType, Dispatch, SetStateAction } from "react";
 import { UserContext } from "../lib/contexts/user.context";
-import { LoginFormFieldsType } from "../lib/types/entries.type";
+import {
+  LoginFormFieldsType,
+  RegisterFormFieldsType,
+} from "../lib/types/entries.type";
 
 export const useLogout = () => useHandleLogout;
 
@@ -34,4 +37,22 @@ const useHandleLogin = async (
   setLoginFormError(false);
   userContext.dispatch({ type: "login", user: parsedResponse.user });
   router.push("/");
+};
+
+export const useRegister = () => useHandleRegister;
+
+const useHandleRegister = async (
+  fields: RegisterFormFieldsType
+): Promise<number> => {
+  const res = await fetch(`/api/auth/register`, {
+    body: JSON.stringify(fields),
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (res.status !== 201) {
+    console.error("Something when wrong");
+  }
+  return res.status;
 };
