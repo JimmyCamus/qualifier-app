@@ -7,7 +7,15 @@ type Data = {
 };
 
 const getAllGames = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  const response = await fetch(`${process.env.SERVER_URL}/games`);
+  let query = "";
+  if (req.query.title) {
+    query = query + `title=${req.query.title}`;
+  }
+
+  if (req.query["categories[]"]) {
+    query = query + `&categories[]=${req.query["categories[]"]}`;
+  }
+  const response = await fetch(`${process.env.SERVER_URL}/games?${query}`);
   const games: Game[] = await response.json();
 
   res.status(200).json({ games });
