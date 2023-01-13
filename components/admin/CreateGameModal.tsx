@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CreateGameFormType } from "../../lib/types/entries.type";
 import Modal from "../Modal";
 
 const CreateGameModal = ({
@@ -6,14 +7,11 @@ const CreateGameModal = ({
 }: {
   handleCreateGame: Function;
 }) => {
-  const [formFields, setFormFields] = useState<{
-    title: string;
-    description: string;
-    categories: string[];
-  }>({
+  const [formFields, setFormFields] = useState<CreateGameFormType>({
     title: "",
     description: "",
     categories: [],
+    images: null,
   });
   const [categoryInput, setCategoryInput] = useState<string>("");
   const handleAddCategory = () => {
@@ -80,8 +78,22 @@ const CreateGameModal = ({
           </div>
         ))}
       </div>
+      <input
+        type="file"
+        accept=".jpg, .jpeg, .png"
+        className="file-input file-input-bordered w-full mt-5"
+        onChange={(e) =>
+          setFormFields({
+            ...formFields,
+            images: e.target.files ? e.target.files[0] : null,
+          })
+        }
+      />
       <div className="modal-action">
-        <button className="btn btn-primary" onClick={() => handleCreateGame(formFields)}>
+        <button
+          className="btn btn-primary"
+          onClick={() => handleCreateGame(formFields)}
+        >
           Create
         </button>
       </div>

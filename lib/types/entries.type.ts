@@ -50,3 +50,10 @@ export type CommentFormStateType = {
   commentFormFields: CommentFormFieldsType;
   setCommentFormFields: Dispatch<SetStateAction<CommentFormFieldsType>>;
 };
+
+export type CreateGameFormType = {
+  title: string;
+  description: string;
+  categories: string[];
+  images: any;
+};
