@@ -3,7 +3,7 @@ import { Game } from "../lib/types/game.type";
 import { User } from "../lib/types/user.type";
 import Carousel from "./Carousel";
 import Comment from "./Comment";
-import Modal from "./Modal";
+import CommentModal from "./CommentModal";
 
 const GameDetail = ({ game, user }: { game: Game; user: User }) => {
   const handleStars = useHandleStars();
@@ -23,7 +23,7 @@ const GameDetail = ({ game, user }: { game: Game; user: User }) => {
         </div>
         {user.id ? (
           <div className="flex justify-center my-11">
-            <Modal game={game} />
+            <CommentModal game={game} />
           </div>
         ) : null}
         {game.comments.map((comment, index) => (
