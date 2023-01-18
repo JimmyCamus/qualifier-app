@@ -5,6 +5,7 @@ import { useUser } from "../../lib/contexts/user.context";
 import { Game } from "../../lib/types/game.type";
 import { User } from "../../lib/types/user.type";
 import { getUser } from "../../utils/user.utils";
+import { getGameData } from "../api/games/[id]";
 
 const Game = ({
   game,
@@ -29,10 +30,7 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const user = await getUser(context.req);
-  const data = await fetch(
-    `${process.env.CLIENT_URL}/api/games/${context.params?.id}`
-  );
-  const { game } = await data.json();
+  const game = await getGameData(context.params?.id);
   return {
     props: {
       game,
