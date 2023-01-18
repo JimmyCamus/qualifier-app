@@ -6,6 +6,7 @@ import { useSetUserData } from "../hooks/user.hooks";
 import { Game } from "../lib/types/game.type";
 import { User } from "../lib/types/user.type";
 import { getUser } from "../utils/user.utils";
+import { getGamesData } from "./api/games/all";
 
 const Home = ({ games, user }: { games: Game[]; user: User }) => {
   useSetUserData(user);
@@ -22,8 +23,7 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const user = await getUser(context.req);
-  const data = await fetch(`${process.env.CLIENT_URL}/api/games/all`);
-  const { games } = await data.json();
+  const games = await getGamesData("");
   return {
     props: {
       games,

@@ -15,10 +15,15 @@ const getAllGames = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   if (req.query["categories[]"]) {
     query = query + `&categories[]=${req.query["categories[]"]}`;
   }
-  const response = await fetch(`${process.env.SERVER_URL}/games?${query}`);
-  const games: Game[] = await response.json();
+  const games: Game[] = await getGamesData(query);
 
   res.status(200).json({ games });
+};
+
+export const getGamesData = async (query: string) => {
+  const response = await fetch(`${process.env.SERVER_URL}/games?${query}`);
+  const games: Game[] = await response.json();
+  return games;
 };
 
 export default getAllGames;
