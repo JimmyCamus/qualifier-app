@@ -1,7 +1,15 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
+import { useLogout } from "../../hooks/auth.hooks";
+import { useUser } from "../../lib/contexts/user.context";
+import { User } from "../../lib/types/user.type";
 
 const Navbar = ({ children }: { children: ReactNode }) => {
+  const userContext = useUser();
+  const user = userContext.user as User;
+  const handleLogout = useLogout();
+  const router = useRouter();
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -25,16 +33,40 @@ const Navbar = ({ children }: { children: ReactNode }) => {
             </label>
           </div>
           <div className="flex-1 px-2 mx-2 text-black text-2xl font-bold lg:text-3xl">
-            <Link href="/">Game Qualifier</Link>
+            <Link href="/">Game Qualifier </Link>
+            <div className="rating">
+              <input
+                type="radio"
+                name="rating-2"
+                className="mx-4 mask mask-star-2 bg-orange-400 hover:cursor-default"
+                disabled
+                checked
+              />
+            </div>
           </div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal text-black">
-              <li>
-                <Link href="/">Login</Link>
-              </li>
-              <li>
-                <Link href="/">Register</Link>
-              </li>
+              {user.id ? (
+                <>
+                  <li>
+                    <Link href="/profile">Profile</Link>
+                  </li>
+                  <li>
+                    <button onClick={() => handleLogout(userContext, router)}>
+                      Sign Out
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link href="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link href="/register">Register</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
@@ -43,12 +75,27 @@ const Navbar = ({ children }: { children: ReactNode }) => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 bg-base-100">
-          <li>
-            <Link href="/">Login</Link>
-          </li>
-          <li>
-            <Link href="/">Register</Link>
-          </li>
+          {user.id ? (
+            <>
+              <li>
+                <Link href="/profile">Profile</Link>
+              </li>
+              <li>
+                <button onClick={() => handleLogout(userContext, router)}>
+                  Sign Out
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link href="/login">Login</Link>
+              </li>
+              <li>
+                <Link href="/register">Register</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>

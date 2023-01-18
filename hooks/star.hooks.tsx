@@ -10,6 +10,7 @@ const handleStars = (rating: number, identifier: string | number) => {
         className="mask mask-star-2 bg-orange-400 hover:cursor-default"
         disabled
         checked={index === Math.round(rating)}
+        key={index}
       />
     );
   }
