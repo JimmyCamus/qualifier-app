@@ -5,6 +5,7 @@ import AdminRoute from "../../components/admin/AdminRoute";
 import CreateGameModal from "../../components/admin/CreateGameModal";
 import GamesTable from "../../components/admin/GamesTable";
 import { useCreateGame } from "../../hooks/admin.hooks";
+import { useSetUserData } from "../../hooks/user.hooks";
 import { CreateGameFormType } from "../../lib/types/entries.type";
 import { Game } from "../../lib/types/game.type";
 import { User } from "../../lib/types/user.type";
@@ -12,6 +13,7 @@ import { getUser } from "../../utils/user.utils";
 import { getGamesData } from "../api/games/all";
 
 const AdminPage = ({ games, user }: { games: Game[]; user: User }) => {
+  useSetUserData(user);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const handleCreateGame = useCreateGame();
