@@ -5,6 +5,7 @@ import {
   LoginFormFieldsType,
   RegisterFormFieldsType,
 } from "../lib/types/entries.type";
+import { User, UserRole } from "../lib/types/user.type";
 
 export const useLogout = () => useHandleLogout;
 
@@ -33,9 +34,13 @@ const useHandleLogin = async (
     setLoginFormError(true);
     return;
   }
-  const parsedResponse = await res.json();
+  const { user }: { user: User } = await res.json();
   setLoginFormError(false);
-  userContext.dispatch({ type: "login", user: parsedResponse.user });
+  userContext.dispatch({ type: "login", user: user });
+  if (user.role === UserRole.ADMIN) {
+    router.push("/admin");
+    return;
+  }
   router.push("/");
 };
 
