@@ -5,7 +5,7 @@ const SearchInput = ({ inputValue, setInputValue }: SearchInputEntries) => {
     <input
       type="text"
       placeholder="Serach game"
-      className="input input-bordered w-full max-w-md"
+      className="input input-bordered w-4/5 lg:w-full max-w-sm"
       onChange={(e) => setInputValue(e.target.value)}
       value={inputValue}
     />

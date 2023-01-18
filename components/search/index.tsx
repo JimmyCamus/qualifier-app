@@ -31,20 +31,22 @@ const Search = ({
   };
 
   return (
-    <div className="mt-4 flex justify-center">
+    <div className="mt-4 flex flex-col lg:flex-row justify-center">
+      <div className="flex flex-row">
+        <button
+          className="btn btn-ghost mx-2"
+          onClick={() => handleSubmit("clean")}
+        >
+          X
+        </button>
+        <SearchInput inputValue={inputValue} setInputValue={setInputValue} />
+        <CategorySelect
+          selectValue={selectValue}
+          setSelectValue={setSelectValue}
+        />
+      </div>
       <button
-        className="btn btn-ghost mx-2"
-        onClick={() => handleSubmit("clean")}
-      >
-        X
-      </button>
-      <SearchInput inputValue={inputValue} setInputValue={setInputValue} />
-      <CategorySelect
-        selectValue={selectValue}
-        setSelectValue={setSelectValue}
-      />
-      <button
-        className="btn btn-secondary mx-2"
+        className="btn btn-secondary m-2 lg:my-0"
         onClick={() => handleSubmit("search")}
       >
         SEARCH

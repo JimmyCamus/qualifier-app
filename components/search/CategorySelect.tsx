@@ -6,7 +6,7 @@ const CategorySelect = ({
 }: CategorySelectEntries) => {
   return (
     <select
-      className="select select-bordered w-48 mx-3"
+      className="select select-bordered w-32 lg:w-48 mx-3"
       onChange={(e) => setSelectValue(e.target.value)}
       value={selectValue}
     >
